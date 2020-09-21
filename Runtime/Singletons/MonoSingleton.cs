@@ -6,7 +6,7 @@ namespace Juce.Utils.Singletons
 {
     public class MonoSingleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        private static T singletonInstance = null;
+        private static T singletonInstance;
 
         protected void InitInstance(T instance)
         {

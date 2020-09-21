@@ -28,7 +28,7 @@ namespace Juce.Utils.Editor
 		}
 
 		// Menu items to select the "master" scene and control whether or not to load it.
-		[MenuItem("Juce/Scene Auto Load/Select Master Scene...")]
+		[MenuItem("Juce/Scene Autoload/Select Master Scene...")]
 		private static void SelectMasterScene()
 		{
 			string masterScene = EditorUtility.OpenFilePanel("Select Master Scene", Application.dataPath, "unity");
