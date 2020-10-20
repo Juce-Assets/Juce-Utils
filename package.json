@@ -1,0 +1,17 @@
+{
+  "name": "com.juce.utils",
+  "version": "0.0.1",
+  "displayName": "Juce-Utils",
+  "description": "This is an example package",
+  "keywords": [
+    "Juce",
+    "Utils"
+  ],
+  "author": {
+    "name": "Guillem Sunyer",
+    "email": "gsunyercaldu@gmail.com",
+    "url": https://github.com/Juce-Assets/Juce-Utils
+  },
+  "type": "template",
+  "hideInEditor": false
+}
