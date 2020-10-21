@@ -24,6 +24,8 @@ namespace Juce.Utils.Editor
 
         private void OnGUI()
         {
+            DrawHeader();
+
             DrawExtensionDefines();
         }
 
@@ -56,25 +58,33 @@ namespace Juce.Utils.Editor
             }
         }
 
+        private void DrawHeader()
+        {
+            EditorGUILayout.LabelField("Juce Configuration", EditorStyles.boldLabel);
+        }
+
         private void DrawExtensionDefines()
         {
-            for (int i = 0; i < extensionsDefines.Count; ++i)
+            using (new EditorGUILayout.VerticalScope(EditorStyles.helpBox))
             {
-                ExtensionDefineEntry currExtensionDefine = extensionsDefines[i];
-
-                bool newEnalbed = EditorGUILayout.Toggle($"{currExtensionDefine.Name} extensions", currExtensionDefine.Enabled);
-
-                if (newEnalbed != currExtensionDefine.Enabled)
+                for (int i = 0; i < extensionsDefines.Count; ++i)
                 {
-                    currExtensionDefine.Enabled = newEnalbed;
+                    ExtensionDefineEntry currExtensionDefine = extensionsDefines[i];
 
-                    if (currExtensionDefine.Enabled)
+                    bool newEnalbed = EditorGUILayout.Toggle($"{currExtensionDefine.Name} extensions", currExtensionDefine.Enabled);
+
+                    if (newEnalbed != currExtensionDefine.Enabled)
                     {
-                        AddScriptingDefineSymbols(currExtensionDefine.Define);
-                    }
-                    else
-                    {
-                        RemoveScriptingDefineSymbols(currExtensionDefine.Define);
+                        currExtensionDefine.Enabled = newEnalbed;
+
+                        if (currExtensionDefine.Enabled)
+                        {
+                            AddScriptingDefineSymbols(currExtensionDefine.Define);
+                        }
+                        else
+                        {
+                            RemoveScriptingDefineSymbols(currExtensionDefine.Define);
+                        }
                     }
                 }
             }
