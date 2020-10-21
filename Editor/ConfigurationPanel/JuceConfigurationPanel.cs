@@ -61,6 +61,12 @@ namespace Juce.Utils.Editor
         private void DrawHeader()
         {
             EditorGUILayout.LabelField("Juce Configuration", EditorStyles.boldLabel);
+
+            EditorGUILayout.Space(2);
+
+            EditorGUILayout.LabelField("Here you can enable or disable the different extensions that can be used with Juce", EditorStyles.wordWrappedLabel);
+
+            EditorGUILayout.Space(2);
         }
 
         private void DrawExtensionDefines()
