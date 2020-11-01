@@ -27,6 +27,8 @@ namespace Juce.Utils.Editor
             DrawHeader();
 
             DrawExtensionDefines();
+
+            DrawDeveloperMode();
         }
 
         private void AddBuildTargetGroups()
@@ -94,6 +96,15 @@ namespace Juce.Utils.Editor
                     }
                 }
             }
+        }
+
+        private void DrawDeveloperMode()
+        {
+            EditorGUILayout.Space(5);
+
+            bool developerMode = JuceConfiguration.Instance.DeveloperMode;
+
+            JuceConfiguration.Instance.DeveloperMode = EditorGUILayout.Toggle("Developer mode", developerMode);
         }
 
         private void AddScriptingDefineSymbols(string define)
