@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEditor;
 
 namespace Juce.Utils.Editor
@@ -7,7 +6,7 @@ namespace Juce.Utils.Editor
     public class JuceConfigurationPanel : EditorWindow
     {
         private readonly List<BuildTargetGroup> buildTargetGroups = new List<BuildTargetGroup>();
-        private readonly List<ExtensionDefineEntry> extensionsDefines = new List<ExtensionDefineEntry>(); 
+        private readonly List<ExtensionDefineEntry> extensionsDefines = new List<ExtensionDefineEntry>();
 
         [MenuItem("Juce/Configuration")]
         public static void ShowWindow()
@@ -52,7 +51,7 @@ namespace Juce.Utils.Editor
 
         private void GetExtensionsDefinesValues()
         {
-            for(int i = 0; i < extensionsDefines.Count; ++i)
+            for (int i = 0; i < extensionsDefines.Count; ++i)
             {
                 ExtensionDefineEntry currExtensionDefine = extensionsDefines[i];
 
@@ -111,7 +110,7 @@ namespace Juce.Utils.Editor
         {
             foreach (BuildTargetGroup targetGroup in buildTargetGroups)
             {
-                if(targetGroup == BuildTargetGroup.Unknown)
+                if (targetGroup == BuildTargetGroup.Unknown)
                 {
                     continue;
                 }
