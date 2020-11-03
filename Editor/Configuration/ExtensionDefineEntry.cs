@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Juce.Utils.Editor
+﻿namespace Juce.Utils.Editor
 {
     internal class ExtensionDefineEntry
     {

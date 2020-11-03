@@ -18,7 +18,7 @@ namespace Juce.Utils.Contracts
 
         public static void IsNotNull(object obj, string infoMessage = "")
         {
-            if(obj == null)
+            if (obj == null)
             {
                 string errorMessage = $"{nameof(IsNotNull)} contract has failed. Expected: not null, got null";
                 HandleFailedContract(errorMessage, infoMessage);
@@ -36,7 +36,7 @@ namespace Juce.Utils.Contracts
 
         public static void IsTrue(bool obj, string infoMessage = "")
         {
-            if(!obj)
+            if (!obj)
             {
                 string errorMessage = $"{nameof(IsTrue)} contract has failed. Expected: true, got: {obj}";
                 HandleFailedContract(errorMessage, infoMessage);

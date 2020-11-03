@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public static class JuceUtilsCameraExtensions
 {
@@ -31,4 +30,3 @@ public static class JuceUtilsCameraExtensions
         return Rect.MinMaxRect(min.x, min.y, max.x, max.y);
     }
 }
-

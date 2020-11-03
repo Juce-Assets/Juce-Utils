@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public static class JuceUtilsGameObjectExtensions
 {
@@ -7,7 +6,7 @@ public static class JuceUtilsGameObjectExtensions
     {
         T component = go.GetComponent<T>();
 
-        if(component != null)
+        if (component != null)
         {
             return component;
         }

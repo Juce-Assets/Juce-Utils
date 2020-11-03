@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Juce.Utils.Singletons
 {
@@ -11,7 +10,7 @@ namespace Juce.Utils.Singletons
         {
             get
             {
-                if(singletonInstance == null)
+                if (singletonInstance == null)
                 {
                     GameObject newGameObject = new GameObject(typeof(T).Name);
                     DontDestroyOnLoad(newGameObject);

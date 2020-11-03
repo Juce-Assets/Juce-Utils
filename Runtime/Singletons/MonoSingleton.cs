@@ -1,6 +1,5 @@
-﻿using System;
+﻿using Juce.Utils.Contracts;
 using UnityEngine;
-using Juce.Utils.Contracts;
 
 namespace Juce.Utils.Singletons
 {

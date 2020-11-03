@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class FlexibleGridLayout : LayoutGroup
@@ -71,16 +69,13 @@ public class FlexibleGridLayout : LayoutGroup
             SetChildAlongAxis(item, 0, xPos, cellSize.x);
             SetChildAlongAxis(item, 1, yPos, cellSize.y);
         }
-
     }
 
     public override void SetLayoutHorizontal()
     {
-
     }
 
     public override void SetLayoutVertical()
     {
-
     }
 }

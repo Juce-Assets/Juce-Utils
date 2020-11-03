@@ -1,5 +1,4 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 
 public static class JuceUtilsStringExtensions
@@ -8,7 +7,7 @@ public static class JuceUtilsStringExtensions
     {
         string ret = str;
 
-        if(!string.IsNullOrEmpty(str))
+        if (!string.IsNullOrEmpty(str))
         {
             StringBuilder sb = new StringBuilder(ret);
 
@@ -33,4 +32,3 @@ public static class JuceUtilsStringExtensions
         return ret;
     }
 }
-

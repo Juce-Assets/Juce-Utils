@@ -1,5 +1,4 @@
 ﻿using System;
-using UnityEngine;
 
 namespace Juce.Utils.Singletons
 {
@@ -11,7 +10,7 @@ namespace Juce.Utils.Singletons
         {
             get
             {
-                if(singletonInstance == null)
+                if (singletonInstance == null)
                 {
                     singletonInstance = Activator.CreateInstance<T>();
                 }

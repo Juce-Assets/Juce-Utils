@@ -10,4 +10,3 @@ public static class JuceUtilsTaskExtensions
         onFinish?.Invoke();
     }
 }
-
