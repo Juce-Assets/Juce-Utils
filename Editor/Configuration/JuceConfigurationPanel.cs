@@ -8,7 +8,7 @@ namespace Juce.Utils.Editor
         private readonly List<BuildTargetGroup> buildTargetGroups = new List<BuildTargetGroup>();
         private readonly List<ExtensionDefineEntry> extensionsDefines = new List<ExtensionDefineEntry>();
 
-        [MenuItem("Juce/Configuration")]
+        [MenuItem("Tools/Juce/Configuration")]
         public static void ShowWindow()
         {
             GetWindow<JuceConfigurationPanel>("Juce configuration").Show(true);
