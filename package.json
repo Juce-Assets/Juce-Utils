@@ -1,15 +1,15 @@
 {
   "name": "com.juce.utils",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "displayName": "Juce-Utils",
-  "description": "This is an example package",
+  "description": "Utils for Juce",
   "keywords": [
     "Juce",
     "Utils"
   ],
   "author": {
     "name": "Guillem Sunyer",
-    "email": "gsunyercaldu@gmail.com",
+    "email": "juce.unity@gmail.com",
     "url": "https://github.com/Juce-Assets/Juce-Utils"
   },
   "type": "template",
