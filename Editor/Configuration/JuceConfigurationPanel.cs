@@ -46,7 +46,6 @@ namespace Juce.Utils.Editor
         {
             extensionsDefines.Clear();
             extensionsDefines.Add(new ExtensionDefineEntry("TextMeshPro", "JUCE_TEXT_MESH_PRO_EXTENSIONS"));
-            extensionsDefines.Add(new ExtensionDefineEntry("2D Toolkit", "JUCE_2D_TOOLKIT_EXTENSIONS"));
         }
 
         private void GetExtensionsDefinesValues()
