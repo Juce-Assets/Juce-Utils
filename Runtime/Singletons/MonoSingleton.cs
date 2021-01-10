@@ -1,4 +1,4 @@
-﻿using Juce.Utils.Contracts;
+﻿using System;
 using UnityEngine;
 
 namespace Juce.Utils.Singletons
@@ -9,7 +9,10 @@ namespace Juce.Utils.Singletons
 
         protected void InitInstance(T instance)
         {
-            Contract.IsNotNull(instance, $"Instance of type {nameof(T)} cannot be null");
+            if (instance == null)
+            {
+                throw new Exception($"Instance of type {nameof(T)} cannot be null");
+            }
 
             singletonInstance = instance;
         }
@@ -18,8 +21,11 @@ namespace Juce.Utils.Singletons
         {
             get
             {
-                Contract.IsNotNull(singletonInstance, $"{nameof(MonoSingleton<T>)} used before initialization. " +
-                       $"Please use {nameof(InitInstance)} before using the singleton instance");
+                if (singletonInstance == null)
+                {
+                    throw new Exception($"{nameof(MonoSingleton<T>)} used before initialization. " +
+                           $"Please use {nameof(InitInstance)} before using the singleton instance");
+                }
 
                 return singletonInstance;
             }
