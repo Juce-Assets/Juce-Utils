@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 
 namespace Juce.Utils.Editor
@@ -32,20 +34,29 @@ namespace Juce.Utils.Editor
 
         private void AddBuildTargetGroups()
         {
-            buildTargetGroups.Add(BuildTargetGroup.Standalone);
-            buildTargetGroups.Add(BuildTargetGroup.Android);
-            buildTargetGroups.Add(BuildTargetGroup.WSA);
-            buildTargetGroups.Add(BuildTargetGroup.iOS);
-            buildTargetGroups.Add(BuildTargetGroup.PS4);
-            buildTargetGroups.Add(BuildTargetGroup.tvOS);
-            buildTargetGroups.Add(BuildTargetGroup.XboxOne);
-            buildTargetGroups.Add(BuildTargetGroup.WebGL);
+            // From https://docs.unity3d.com/ScriptReference/BuildTarget.html
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.StandaloneOSX));
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.StandaloneWindows));
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.iOS));
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.Android));
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.StandaloneWindows));
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.WebGL));
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.WSAPlayer));
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.StandaloneLinux64));
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.PS4));
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.XboxOne));
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.tvOS));
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.Switch));
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.Stadia));
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.CloudRendering));
+            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.PS5));
         }
 
         private void AddExtensionsDefines()
         {
             extensionsDefines.Clear();
             extensionsDefines.Add(new ExtensionDefineEntry("TextMeshPro", "JUCE_TEXT_MESH_PRO_EXTENSIONS"));
+            extensionsDefines.Add(new ExtensionDefineEntry("Timeline", "JUCE_TIMELINE_EXTENSIONS"));
         }
 
         private void GetExtensionsDefinesValues()
@@ -178,24 +189,16 @@ namespace Juce.Utils.Editor
 
                 string[] definesString = definesNoSpaces.Split(';');
 
-                bool found = false;
-
                 for (int i = 0; i < definesString.Length; ++i)
                 {
                     if (definesString[i].Equals(define))
                     {
-                        found = true;
-                        break;
+                        return true;
                     }
-                }
-
-                if (!found)
-                {
-                    return false;
                 }
             }
 
-            return true;
+            return false;
         }
     }
 }
