@@ -15,11 +15,6 @@ namespace Juce.Utils.Singletons
             {
                 if (singletonInstance == null)
                 {
-                    if (created)
-                    {
-                        return null;
-                    }
-
                     GameObject newGameObject = new GameObject(typeof(T).Name);
                     DontDestroyOnLoad(newGameObject);
                     singletonInstance = newGameObject.AddComponent<T>();
