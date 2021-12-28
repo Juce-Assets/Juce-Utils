@@ -48,10 +48,21 @@ namespace Juce.Utils.InterfaceImplementation
             }
 
             int typeIndex = GetCurrentTypeIndex(property);
+
             if (types.Length > 0 && typeIndex == -1)
             {
-                InitializePropertyAtIndex(property, 0);
-                typeIndex = 0;
+                bool defaultFound = TryGetDefaultType(out int defaultTypeIndex);
+
+                if (defaultFound)
+                {
+                    InitializePropertyAtIndex(property, defaultTypeIndex);
+                    typeIndex = defaultTypeIndex;
+                }
+                else
+                {
+                    InitializePropertyAtIndex(property, 0);
+                    typeIndex = 0;
+                }
             }
 
             if (typeIndex != previousTypeIndex)
@@ -128,6 +139,28 @@ namespace Juce.Utils.InterfaceImplementation
                     GetTypeTooltip(x)
                 )
             ).ToArray();
+        }
+
+        private bool TryGetDefaultType(out int defaultTypeIndex)
+        {
+            for (int i = 0; i < types.Length; ++i)
+            {
+                Type type = types[i];
+
+                SelectImplementationDefaultTypeAttribute defaultAttribute = Attribute.GetCustomAttribute(
+                    type,
+                    typeof(SelectImplementationDefaultTypeAttribute)
+                    ) as SelectImplementationDefaultTypeAttribute;
+
+                if(defaultAttribute != null)
+                {
+                    defaultTypeIndex = i;
+                    return true;
+                }
+            }
+
+            defaultTypeIndex = default;
+            return false;
         }
 
         private static string GetTypeTooltip(Type type)
