@@ -5,7 +5,7 @@ using UnityEditor;
 
 namespace Juce.Utils.Editor
 {
-    public class JuceConfigurationPanel : EditorWindow
+    public class JuceConfigurationPanelWindow : EditorWindow
     {
         private readonly List<BuildTargetGroup> buildTargetGroups = new List<BuildTargetGroup>();
         private readonly List<ExtensionDefineEntry> extensionsDefines = new List<ExtensionDefineEntry>();
@@ -13,7 +13,7 @@ namespace Juce.Utils.Editor
         [MenuItem("Tools/Juce/Configuration")]
         public static void ShowWindow()
         {
-            GetWindow<JuceConfigurationPanel>("Juce configuration").Show(true);
+            GetWindow<JuceConfigurationPanelWindow>("Juce configuration").Show(true);
         }
 
         private void OnEnable()
@@ -34,22 +34,24 @@ namespace Juce.Utils.Editor
 
         private void AddBuildTargetGroups()
         {
-            // From https://docs.unity3d.com/ScriptReference/BuildTarget.html
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.StandaloneOSX));
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.StandaloneWindows));
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.iOS));
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.Android));
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.StandaloneWindows));
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.WebGL));
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.WSAPlayer));
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.StandaloneLinux64));
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.PS4));
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.XboxOne));
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.tvOS));
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.Switch));
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.Stadia));
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.CloudRendering));
-            buildTargetGroups.Add(BuildPipeline.GetBuildTargetGroup(BuildTarget.PS5));
+            BuildTarget[] values = Enum.GetValues(typeof(BuildTarget)).Cast<BuildTarget>().ToArray();
+
+            foreach(BuildTarget value in values)
+            {
+                BuildTargetGroup group = BuildPipeline.GetBuildTargetGroup(value);
+
+                if (group == BuildTargetGroup.Unknown)
+                {
+                    continue;
+                }
+
+                if(buildTargetGroups.Contains(group))
+                {
+                    continue;
+                }
+
+                buildTargetGroups.Add(group);
+            }
         }
 
         private void AddExtensionsDefines()

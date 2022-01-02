@@ -13,7 +13,7 @@ namespace Juce.Utils.Singletons
         {
             get
             {
-                if (singletonInstance == null)
+                if (!created)
                 {
                     GameObject newGameObject = new GameObject(typeof(T).Name);
                     DontDestroyOnLoad(newGameObject);
