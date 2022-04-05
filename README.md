@@ -8,3 +8,13 @@
 [![openupm](https://img.shields.io/npm/v/com.juce.utils?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.juce.utils/)
 
 ![](https://github.com/Juce-Assets/Juce-Utils/blob/develop/Misc/Logo.png)
+
+## Installing
+
+### - Via UPM
+Unity does not support resolving dependences from a git url. Because of that, you will need to add the following lines to your [manifest.json](https://docs.unity3d.com/Manual/upm-manifestPrj.html).
+```
+"dependencies": {
+   "com.juce.utils": "git+https://github.com/Juce-Assets/Juce-Utils"
+},
+```
