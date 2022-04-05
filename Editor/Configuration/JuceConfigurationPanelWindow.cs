@@ -57,8 +57,6 @@ namespace Juce.Utils.Editor
         private void AddExtensionsDefines()
         {
             extensionsDefines.Clear();
-            extensionsDefines.Add(new ExtensionDefineEntry("TextMeshPro", "JUCE_TEXT_MESH_PRO_EXTENSIONS"));
-            extensionsDefines.Add(new ExtensionDefineEntry("Timeline", "JUCE_TIMELINE_EXTENSIONS"));
             extensionsDefines.Add(new ExtensionDefineEntry("Cinemachine", "JUCE_CINEMACHINE_EXTENSIONS"));
         }
 
